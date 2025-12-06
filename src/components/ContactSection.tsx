@@ -1,6 +1,20 @@
 import { useState } from "react";
-import { MapPin, Phone, Mail, Send } from "lucide-react";
 import { toast } from "sonner";
+// --- Font Awesome Imports ---
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// Solid Icons for contact details
+import { faMapPin, faPhone, faEnvelope, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
+// Brand Icons for social media
+import { faInstagram, faYoutube, faTiktok } from '@fortawesome/free-brands-svg-icons';
+
+
+// 2. Define Social Links Data (UPDATED to use FA icon objects)
+const socialLinks = [
+  { icon: faInstagram, href: "https://www.instagram.com/sufiyan.realtor.lyka/?utm_source=qr", name: "Instagram" },
+  { icon: faYoutube, href: "https://www.youtube.com/@Realtorsufiyanzubair", name: "YouTube" },
+  { icon: faTiktok, href: "https://www.tiktok.com/@sufiyan.relator_lyka?_t=ZS-8y9FHnVWL0i&_r=1'", name: "TikTok" },
+];
+
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -33,7 +47,7 @@ const ContactSection = () => {
     <section id="contact" className="py-24 bg-secondary">
       <div className="container mx-auto px-6 lg:px-12">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
-          {/* Left Column - Info */}
+          {/* Left Column - Info (Icons Updated) */}
           <div>
             <p className="luxury-subheading text-[10px] text-muted-foreground mb-4">
               Get In Touch
@@ -50,7 +64,8 @@ const ContactSection = () => {
 
             <div className="space-y-6">
               <div className="flex items-start gap-4">
-                <MapPin className="w-5 h-5 text-foreground mt-1" />
+                {/* Updated Icon: MapPin -> faMapPin */}
+                <FontAwesomeIcon icon={faMapPin} className="w-5 h-5 text-foreground mt-1" />
                 <div>
                   <p className="text-xs tracking-widest uppercase text-muted-foreground mb-1">
                     Address
@@ -64,7 +79,8 @@ const ContactSection = () => {
               </div>
 
               <div className="flex items-start gap-4">
-                <Phone className="w-5 h-5 text-foreground mt-1" />
+                {/* Updated Icon: Phone -> faPhone */}
+                <FontAwesomeIcon icon={faPhone} className="w-5 h-5 text-foreground mt-1" />
                 <div>
                   <p className="text-xs tracking-widest uppercase text-muted-foreground mb-1">
                     Phone
@@ -74,7 +90,8 @@ const ContactSection = () => {
               </div>
 
               <div className="flex items-start gap-4">
-                <Mail className="w-5 h-5 text-foreground mt-1" />
+                {/* Updated Icon: Mail -> faEnvelope */}
+                <FontAwesomeIcon icon={faEnvelope} className="w-5 h-5 text-foreground mt-1" />
                 <div>
                   <p className="text-xs tracking-widest uppercase text-muted-foreground mb-1">
                     Email
@@ -83,11 +100,35 @@ const ContactSection = () => {
                 </div>
               </div>
             </div>
+
+            {/* 3. Social Media Links Section (Rendering Updated) */}
+            <div className="mt-12 pt-6 border-t border-border">
+              <p className="text-xs tracking-widest uppercase text-muted-foreground mb-4">
+                Connect with us
+              </p>
+              <div className="flex space-x-4">
+                {socialLinks.map((link) => (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={link.name}
+                    className="text-foreground hover:text-muted-foreground transition-colors p-2 border border-border rounded-full hover:bg-background"
+                  >
+                    {/* Using FontAwesomeIcon to render the icon object */}
+                    <FontAwesomeIcon icon={link.icon} className="w-5 h-5" />
+                  </a>
+                ))}
+              </div>
+            </div>
+
           </div>
 
           {/* Right Column - Form */}
           <div>
             <form onSubmit={handleSubmit} className="space-y-6">
+              {/* ... form fields ... */}
               <div className="grid sm:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-xs tracking-widest uppercase text-muted-foreground mb-2">
@@ -170,7 +211,8 @@ const ContactSection = () => {
                 className="luxury-button luxury-button-primary w-full sm:w-auto group"
               >
                 <span>Send Inquiry</span>
-                <Send className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" />
+                {/* Updated Icon: Send -> faPaperPlane */}
+                <FontAwesomeIcon icon={faPaperPlane} className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" />
               </button>
             </form>
           </div>
