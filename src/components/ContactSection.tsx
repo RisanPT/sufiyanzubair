@@ -43,8 +43,8 @@ const ContactSection = () => {
             </h2>
             <div className="luxury-divider !mx-0 mb-8" />
             <p className="luxury-body text-muted-foreground mb-12 max-w-md">
-              Our dedicated team of luxury property specialists is ready to assist you 
-              in finding your perfect Dubai residence. Experience personalized service 
+              Our dedicated team of luxury property specialists is ready to assist you
+              in finding your perfect Dubai residence. Experience personalized service
               at its finest.
             </p>
 
@@ -69,7 +69,7 @@ const ContactSection = () => {
                   <p className="text-xs tracking-widest uppercase text-muted-foreground mb-1">
                     Phone
                   </p>
-                  <p className="font-light">+971 4 123 4567</p>
+                  <p className="font-light">+971 502 26 8804</p>
                 </div>
               </div>
 
@@ -79,7 +79,7 @@ const ContactSection = () => {
                   <p className="text-xs tracking-widest uppercase text-muted-foreground mb-1">
                     Email
                   </p>
-                  <p className="font-light">inquiries@prestigedubai.com</p>
+                  <p className="font-light">sufiyan.refthub@gmail.com</p>
                 </div>
               </div>
             </div>

@@ -1,16 +1,42 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom"; // 1. Import useNavigate
 import { Menu, X } from "lucide-react";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate(); // 2. Initialize useNavigate
 
+  // 3. Update navLinks: Use path for all. The '#' items are now full paths.
   const navLinks = [
-    { name: "Properties", href: "#properties" },
-    { name: "Developers", href: "#developers" },
-    { name: "About", href: "/about" },
-    { name: "Contact", href: "/contact" },
+    { name: "Properties", path: "/#properties" },
+    { name: "Developers", path: "/#developers" },
+    { name: "About", path: "/about" },
+    { name: "Contact", path: "/contact" },
   ];
+
+  // 4. Custom handler function for navigation and scrolling
+  const handleNav = (path) => {
+    // Close the mobile menu
+    setIsMenuOpen(false);
+
+    // Check if the path contains an anchor (#)
+    if (path.includes('#')) {
+      const [route, hash] = path.split('#');
+
+      // If we are already on the correct route (e.g., '/', and route is '/'), 
+      // just scroll. Otherwise, navigate first.
+      if (window.location.pathname === route) {
+        document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        // Navigate to the route. We'll handle the scroll in a useEffect on the target page.
+        // For this simple header, navigating to the full path will work.
+        navigate(path);
+      }
+    } else {
+      // Standard route navigation (e.g., /about, /contact)
+      navigate(path);
+    }
+  };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
@@ -19,34 +45,34 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <span className="text-xl font-light tracking-widest uppercase">
-              Prestige
+              Sufiyan
             </span>
             <span className="text-xl font-semibold tracking-widest uppercase ml-1">
-              Dubai
+              Zubair
             </span>
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-12">
             {navLinks.map((link) => (
-              <a
+              <button // 5. Change <a> to <button> or use a custom component
                 key={link.name}
-                href={link.href}
+                onClick={() => handleNav(link.path)} // 6. Use the handler
                 className="text-xs font-medium tracking-widest uppercase luxury-link text-muted-foreground hover:text-foreground transition-colors"
               >
                 {link.name}
-              </a>
+              </button>
             ))}
           </nav>
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <a
-              href="#contact"
+            <button // 7. Change <a> to <button> and use handler
+              onClick={() => handleNav("/#contact")}
               className="luxury-button luxury-button-primary text-[10px]"
             >
               Inquire Now
-            </a>
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -65,22 +91,20 @@ const Header = () => {
         <div className="md:hidden absolute top-20 left-0 right-0 bg-background border-b border-border animate-fade-in">
           <nav className="container mx-auto px-6 py-8 flex flex-col space-y-6">
             {navLinks.map((link) => (
-              <a
+              <button // 8. Use <button> and the handler for mobile
                 key={link.name}
-                href={link.href}
-                className="text-sm font-medium tracking-widest uppercase text-muted-foreground hover:text-foreground transition-colors"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={() => handleNav(link.path)}
+                className="text-sm font-medium tracking-widest uppercase text-muted-foreground hover:text-foreground transition-colors text-left"
               >
                 {link.name}
-              </a>
+              </button>
             ))}
-            <a
-              href="#contact"
+            <button // 9. Use <button> and the handler for mobile CTA
+              onClick={() => handleNav("/#contact")}
               className="luxury-button luxury-button-primary text-[10px] w-fit"
-              onClick={() => setIsMenuOpen(false)}
             >
               Inquire Now
-            </a>
+            </button>
           </nav>
         </div>
       )}
