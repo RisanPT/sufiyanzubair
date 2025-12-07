@@ -70,10 +70,13 @@ const ContactSection = () => {
                   <p className="text-xs tracking-widest uppercase text-muted-foreground mb-1">
                     Address
                   </p>
+                  <p className="font-light font-semibold mb-1">
+                    Lyka Real Estate Broker L.L.C.
+                  </p>
                   <p className="font-light">
-                    Level 45, Emirates Towers
+                    Office 4501, Level 45, Emirates Towers
                     <br />
-                    Sheikh Zayed Road, Dubai, UAE
+                    Sheikh Zayed Rd, Trade Centre 2, Dubai, UAE
                   </p>
                 </div>
               </div>

@@ -9,15 +9,15 @@ const Footer = () => {
           <div className="md:col-span-2">
             <Link to="/" className="inline-block mb-6">
               <span className="text-xl font-light tracking-widest uppercase">
-                Prestige
+                Sufiyan
               </span>
               <span className="text-xl font-semibold tracking-widest uppercase ml-1">
-                Dubai
+                Zubair
               </span>
             </Link>
             <p className="luxury-body text-primary-foreground/60 max-w-sm">
-              Your gateway to Dubai's most exclusive properties. 
-              Experience luxury living at its finest with our curated 
+              Your gateway to Dubai's most exclusive properties.
+              Experience luxury living at its finest with our curated
               collection of premium real estate.
             </p>
           </div>
@@ -83,7 +83,7 @@ const Footer = () => {
 
         <div className="border-t border-primary-foreground/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-primary-foreground/40">
-            © 2024 Prestige Dubai. All rights reserved.
+            © 2024 Sufiyan Zubair. All rights reserved.
           </p>
           <div className="flex gap-6">
             <a href="#" className="text-xs text-primary-foreground/40 hover:text-primary-foreground transition-colors">
